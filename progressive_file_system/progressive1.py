@@ -37,7 +37,6 @@ class IntegerContainer:
         if(not self.container):
             return False
         if(self.container.val == num):
-            #TODO: remove from the linkedlist 
             tmp  = self.container.next
             self.head = tmp 
             self.container.next = None 
