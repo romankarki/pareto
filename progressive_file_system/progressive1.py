@@ -14,6 +14,14 @@ class IntegerContainer:
         self.head = None 
         self.tail = None 
         self.len = 0
+        self.call_stack = []
+        self.operations = ["add", "delete"]
+
+        self.opposite ={
+            "add":"delete",
+            "delete": "add"
+        }
+        
         
 
     def add(self, num: int ) -> int:
@@ -26,9 +34,8 @@ class IntegerContainer:
            self.head = self.container
            self.tail = self.container
 
-        
-        
         self.len += 1
+        self.call_stack.append(("add", num))
         return self.len
     
 
@@ -44,6 +51,7 @@ class IntegerContainer:
             if(self.len == 1):
                 self.tail = tmp
             self.len -= 1
+            self.call_stack.append(("delete", num))
             return True
         
         while(node and node.next):
@@ -53,6 +61,7 @@ class IntegerContainer:
                 if(not node.next):
                     self.tail = node
                 self.len -= 1
+                self.call_stack.append(("delete", num))
                 return True
             node = node.next
         return False
@@ -64,7 +73,16 @@ class IntegerContainer:
             print("    ||    ")
             h = h.next
         print("End of print ------")
-
+    
+    def undo(self): 
+        if len(self.call_stack) == 0:
+            return False
+        op, val = self.call_stack.pop()
+        print("undoing", op,"for", val)
+        if op == "add":
+            self.delete(val) 
+        elif op == "delete":
+            self.add(val) 
 
 
 
@@ -75,9 +93,13 @@ c.add(10)
 c.add(100)
 c.add(400)
 c.add(1000)
-c.print_ds()
 c.delete(5)
-c.delete(100)
-c.delete(200)
-print("---------------After all operation ------------------------")
 c.print_ds()
+c.undo()
+print("undoing")
+c.print_ds()
+
+# c.delete(100)
+# c.delete(200)
+# print("---------------After all operation ------------------------")
+# c.print_ds()
