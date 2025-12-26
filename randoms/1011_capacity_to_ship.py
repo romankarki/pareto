@@ -35,4 +35,3 @@ class Solution:
            currCap -= w
        return True 
 
-
