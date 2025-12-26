@@ -17,3 +17,8 @@ class Solution:
             
             l += 1
         return False
+
+
+s = Solution()
+
+print(s.check_inclusion("edd", "acbdfdedfsadfe"))
