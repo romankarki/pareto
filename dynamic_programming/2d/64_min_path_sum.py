@@ -29,9 +29,21 @@ class Solution:
         return self.ans 
     
 
+    def bottomUp(self, grid: List[List[int]]) -> int:
+        R, C = len(grid), len(grid[0])
+        dp = [[float("inf")] * (C + 1)  for _ in range(R+1)]
+        dp[R-1][C] = 0 
+
+        for r in range(R - 1, -1, -1):
+            for c in range(C-1, -1, -1):
+                dp[r][c] = grid[r][c] + min(dp[r+1][c], dp[r][c+1])
+        
+        return dp[0][0]
+    
+
 
 
 grid = [[1,3,1],[1,5,1],[4,2,1]]
 
 s = Solution()
-print("minimum path sum of",grid,"is",s.minPathSum(grid))
+print("minimum path sum of",grid,"is",s.bottomUp(grid))
