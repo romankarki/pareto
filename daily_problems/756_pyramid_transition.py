@@ -4,9 +4,12 @@ class Solution:
 
     def pyramid(self, bottom: str, allowed: List[str]) -> bool:
 
+        memo = set()
         def backtrack(level: int, b: str, n: int, new_b: str):
 
             state = (b, n, new_b) # bottom, index, new_bottom
+            if state in memo:
+                return False
             
             if len(b) == 1:
                 return True
@@ -21,7 +24,9 @@ class Solution:
                     else:
                         if backtrack(level, b, n+1, new_b+each[2]):
                             return True
-                    
+            
+            memo.add(state)
+
             return False
         
         return backtrack(len(bottom)-1, bottom, 0, "")
