@@ -21,9 +21,13 @@ class Solution:
                     else:
                         if backtrack(level, b, n+1, new_b+each[2]):
                             return True
-                
+                    
             return False
+        
         return backtrack(len(bottom)-1, bottom, 0, "")
                         
                 
+
+s = Solution()
+print(s.pyramid("bcd", ["bcc","cde","cea", "fff"]))
                         
