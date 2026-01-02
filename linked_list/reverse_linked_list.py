@@ -13,3 +13,15 @@ def reverse_linked_list( head):
         prev = curr 
         curr = temp 
     return prev 
+
+
+def reverse_practise(head):
+
+    curr, prev = head, None 
+
+    while curr: 
+        temp = curr.next 
+        curr.next = prev 
+        prev = curr
+        curr = temp 
+    return prev 
