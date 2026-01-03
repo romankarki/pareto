@@ -1,8 +1,27 @@
 from typing import List
+from typing import Tuple
 
 
 class Solution:
 
+    def num_of_ways_bruteforce(self, n: int) -> int:
+        patterns = []
+        for a in range(0, 3):
+            for b in range(0, 3):
+                for c in range(0, 3):
+                    if a != b and b != c:
+                        patterns.append((a,b,c))
+        
+        def solve(row_index: int, prev_row_colors: tuple[int, int, int]) -> int:
+            if row_index == n:
+                return 1
+            total = 0
+            for curr_color in range(0, 3):
+                if curr_color != prev_row_colors[0] and curr_color != prev_row_colors[1]:
+                    total += solve(row_index + 1, [prev_row_colors[1], curr_color])
+            return total
+        return solve(0, (-1, -1, -1))
+        
     def num_of_ways(self, n: int) -> int:
 
         M = 10**9 + 7
