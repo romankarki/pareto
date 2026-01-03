@@ -21,6 +21,9 @@ class Solution:
                     total += solve(row_index + 1, [prev_row_colors[1], curr_color])
             return total
         return solve(0, (-1, -1, -1))
+    
+
+    
         
     def num_of_ways(self, n: int) -> int:
 
