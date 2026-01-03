@@ -1,29 +1,33 @@
 from typing import List
+from collections import defaultdict
 
 class Solution:
 
     def minLength(self, nums: List[int], k: int) -> int:
-        res= len(nums) * 2
-        for i in range(0, len(nums)):
-            total = 0 
-            count = 0 
-            seen = set()
-            n = []
-            for j in range(i, len(nums)):
-                if nums[j] not in seen:
-                    total += nums[j]
-                    seen.add(nums[j])
-                count += 1
-                # seen.add(nums[j])
-                n.append(nums[j])
-                if total >= k:
-                    # print(n)
-                    res = min(res, count)
-                    break
-        if res > len(nums):
-            return -1
-        return res
+        counts = defaultdict(int)
+        l, total = 0, 0 
+        ans = float('inf')
 
-    def min_length_at_k(self, nums: List[int], k: int) -> int:
-        
-        pass
+        for r in range(len(nums)):
+            counts[nums[r]] += 1
+
+            if counts[nums[r]] == 1:
+                #add only if it's the first time 
+                total += nums[r]
+            
+            while total >= k:
+                curr_len = r - l + 1
+                ans = min(ans, curr_len)
+
+                counts[nums[l]] -= 1
+                if counts[nums[l]] == 0:
+                    total -= nums[l]
+                l += 1
+        return ans if ans <= len(nums) else -1
+    
+
+
+s = Solution()
+
+print(s.minLength([2,2,3,1], 4))
+            
