@@ -12,7 +12,7 @@ class Solution:
                     if a != b and b != c:
                         patterns.append((a,b,c))
         
-        def solve(row_index: int, prev_row_colors: tuple[int, int, int]) -> int:
+        def solve(row_index: int, prev_row_colors: Tuple[int, int, int]) -> int:
             if row_index == n:
                 return 1
             total = 0
