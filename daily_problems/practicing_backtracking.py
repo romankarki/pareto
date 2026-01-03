@@ -116,6 +116,14 @@ class Solution:
 
         backtrack([], [False] * len(nums))
         return res
+    
+
+    '''
+    Personal: Permutation of string 
+    Input: chars = ['a', 'b'] target = 3
+    -> Generates all possible string of len = 3 
+    Output: ['aaa','aab','aba','baa','abb','bba','bab','bbb']
+    '''
 
 
 
