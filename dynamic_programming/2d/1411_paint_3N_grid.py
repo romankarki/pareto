@@ -40,6 +40,22 @@ class Solution:
             return memo[(row,  prev)]
 
         return dfs(0, None)
+    
+
+    def num_ways_bottom_up(self, n: int) -> int:
+        '''
+        pseudo code:
+        dp[row][pattern] = ways 
+        dp[0][pattern] = 1 for all patterns 
+        for row in 1....,n:
+            for curr_pattern:
+                dp[row][curr] += dp[row-1][prev]
+                if compatible(prev, curr)
+        
+        answer = sum(dp[n][*])
+        
+        '''
+        pass
 
 
 
