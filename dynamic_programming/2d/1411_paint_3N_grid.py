@@ -22,6 +22,10 @@ class Solution:
 
 
         memo = {}
+
+        # from functools import lru_cache
+
+        # @lru_cache(None)
         def dfs(row, prev):
             if row == n: 
                 return 1 
