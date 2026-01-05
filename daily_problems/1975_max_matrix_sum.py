@@ -25,3 +25,14 @@ class Solution:
         if count_neg % 2 == 1:
             return abs_sum - (2*mini)
         return abs_sum 
+
+
+
+s = Solution()
+i= [
+    [1,2,3],
+    [-1,-2,-3],
+    [1,2,3]
+]
+
+print(s.max_matrix_sum(i))
