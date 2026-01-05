@@ -37,3 +37,8 @@ class Solution:
             if v > c2[k]:
                 return False
         return True 
+    
+
+s = Solution()
+
+print(s.min_window("ADOBECODEBANC", "ABC"))
