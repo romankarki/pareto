@@ -4,7 +4,6 @@ class Solution:
 
     def calc_permute(self, nums: List[int]) -> None:
         print("input", nums)
-
         i = len(nums) - 2
 
         while i >= 0 and nums[i] >= nums[i+1]:
@@ -25,7 +24,22 @@ class Solution:
             nums[start], nums[end] = nums[end], nums[start]
             start += 1
             end -= 1
+    
 
+    def revise_next_perm(self, nums: List[int]) -> None:
+        print("input arr", nums)
+
+        i = len(nums) - 2
+        while i >= 0 and nums[i] >= nums[i+1]:
+            i-= 1
+        if i>=0:
+            j = len(nums) - 1
+            while j >= 0 and nums[j] <= nums[i]:
+                j -= 1
+            nums[j], nums[i] = nums[i], nums[j]
+        self.reverse(nums, i+1, len(nums) - 1)
+        
+        print("output array", nums)
 
 
 s = Solution()
