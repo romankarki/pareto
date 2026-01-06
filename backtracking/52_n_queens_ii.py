@@ -1,27 +1,29 @@
 from typing import List
 
-class Solution: 
-
-    def solve_n_queens(self, n: int ) -> List[List[str]]:
-        
+class Solution:
+    def totalNQueens(self, n: int) -> int:
         res = []
+
         board = [['.'] * n for _ in range(n)]
 
         def backtrack(r):
-            if r == n:
+            if r == n: 
                 copy = ["".join(row) for row in board]
                 res.append(copy)
                 return 
-
+            
             for c in range(0, n):
-                if self.check_safe(r,c, board):
+                if self.check_safe(r, c, board):
                     board[r][c] = "Q"
-                    backtrack(r+1)
+                    backtrack(r + 1)
                     board[r][c] = "."
+        
 
         backtrack(0)
+        # print(res)
         return len(res)
     
+
     def check_safe(self, r: int, c: int, board: List[List[str]]) -> bool:
 
         row = r - 1
@@ -51,7 +53,5 @@ class Solution:
 
 s = Solution()
 
-print(s.solve_n_queens(4))
-    
-
-
+print(s.totalNQueens(4))
+        
