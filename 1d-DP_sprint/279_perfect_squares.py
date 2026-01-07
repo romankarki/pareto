@@ -21,3 +21,25 @@ class Solution:
             return res
         
         return dfs(num)
+    
+
+
+
+    def perfect_nums_dp(self, nums: int) -> int: 
+
+        '''
+        12 -> 4 + 4 + 4
+        [0 1 2 3 1 _ _ _ _ _ _ _]
+        '''
+        dp = [float('inf')] * (nums+1)
+        dp[0] = 0 
+    
+
+        for i in range(1, nums+1):
+            j = 1 
+            while j * j <= i: 
+                dp[i] = min(dp[i], 1 + dp[i - j*j])
+                j += 1
+        return dp[nums]
+
+
