@@ -13,10 +13,11 @@ class Solution:
                 l += 1
                 continue
             each = ""
-            while l<=r and path != "/":
+            while l<=r and path[l] != "/":
                 each += path[l]
                 l += 1
             ip.append(each)
+        print("input", ip)
         
         for each in ip:
             if each == ".":
@@ -25,12 +26,10 @@ class Solution:
             if each == "..":
                 res.pop()
                 continue
-            elif not len(res)  and each == "..":
-                continue
             
 
             res.append(each)
-        
+        print("response", res)
 
         return "/" + "/".join(res)
 
