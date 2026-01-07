@@ -56,6 +56,28 @@ class Solution:
 
 
         return dfs(0)
+
+
+    def hourse_robber_dp(self, nums: List[int]) -> int:
+        '''
+        [1, 2, 3, 1]
+        [4, 3, 3, 1] -> DP 
+
+        dp[2] = max(dp[3], nums[2] + dp[4])
+
+        '''
+
+        dp = [0] * (len(nums)+1)
+
+        for i in range(len(nums)-1, -1, -1):
+            
+            if i == (len(nums) - 1):
+                dp[i] = nums[i]
+                continue
+            
+            dp[i] = max(dp[i+1], dp[i+2]+nums[i])
+
+        return dp[0] 
     
 
 
