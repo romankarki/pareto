@@ -36,15 +36,23 @@ class Solution:
 
 
     def repractise_memo(self, nums: List[int]) -> int: 
+        from functools import lru_cache
 
+        memo = {}
+
+        @lru_cache(None)
         def dfs(i: int) -> int:
             if i >= len(nums): 
                 return 0 
+            if i in memo: 
+                return memo[i]
 
             take_curr = nums[i] + dfs(i+2)
             skip_curr = dfs(i+1)
 
-            return max(take_curr, skip_curr) 
+            memo[i] = max(take_curr, skip_curr)
+
+            return memo[i] 
 
 
         return dfs(0)
