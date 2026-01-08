@@ -48,6 +48,9 @@ class Solution:
     def max_dot_product_memoized(self, nums1: List[int], nums2: List[int]) -> int: 
         m, n = len(nums1), len(nums2)
 
+        from functools import lru_cache
+
+        @lru_cache(None)
         def dfs(i, j, taken): 
 
             if i == m or i== n:
