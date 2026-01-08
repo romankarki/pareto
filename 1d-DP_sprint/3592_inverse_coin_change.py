@@ -14,6 +14,7 @@ class Solution:
         return dp[1:]
 
     def brute_inverse(self, num_ways: int) -> List[int]: 
+        pass
 
         # TODO : LATER TOO MUCH DIFFICULT FOR TODAY
         # n = len(num_ways)
