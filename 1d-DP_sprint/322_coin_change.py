@@ -42,10 +42,23 @@ class Solution:
         return res if res != float('inf') else -1 
 
 
-    
+    def coin_change_deduct(self, coins: List[int], amount: int) -> int:
+        def dfs(rem: int) -> int: 
+            if rem == 0: 
+                return 0 
+            res = float('inf')
+            for c in coins: 
+                if rem - c >= 0:
+                    res = min(res, 1+dfs(rem - c))
+            return res 
+
+
+        min_coins = dfs(amount)
+        
+        return -1 if min_coins == float('inf') else min_coins
 
 
 
 s = Solution()
 
-print(s.coin_change([1,2,5], 11))
+print(s.coin_change_deduct([1,2,5], 11))
