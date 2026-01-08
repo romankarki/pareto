@@ -67,3 +67,6 @@ class Solution:
 
 
 
+s = Solution()
+
+print(s.max_dot_product([2, 1, -2, 5], [3, 0 , -6]))
