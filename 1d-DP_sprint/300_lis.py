@@ -17,3 +17,16 @@ class Solution:
             if prev_idx == -1 or nums[i] > nums[prev_idx]: 
                 ans = max(ans, 1 + dfs(i +1, i ))
         return dfs(0, -1)
+    
+
+    def length_of_lis(self, nums: List[int]) -> int: 
+
+        n = len(nums)
+
+        dp = [1] * n 
+
+        for  i in range(n): 
+            for j in range(i): 
+                if nums[j] < nums[i]: 
+                    dp[i] = max(dp[i], dp[j] + 1)
+        return max(dp)
