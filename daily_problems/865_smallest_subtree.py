@@ -56,6 +56,19 @@ class Solution:
 
     def subtree_smallest_deepest(self, root: TreeNode) -> TreeNode: 
 
+        '''
+                    3             -> (4, 2) ==> ans is Treenode(2)
+                 /     \
+                /       \
+               5         1        -> (3, 2) (2, 1)
+            /     \    /     \
+           6       2  0       8   -> (1, 6) (2, 2)  (1, 0) (1, 8)
+                  /  \
+                 7    4 
+                (1,7) (1,4)
+        
+        '''
+
         def dfs(node: TreeNode) -> tuple[int, TreeNode]: 
 
             if not node: 
