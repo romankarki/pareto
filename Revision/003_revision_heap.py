@@ -72,6 +72,31 @@ class Revision:
                 heapq.heappop(heap)
         return heap[0]
 
+
+    def k_freq_element_arr_pattern2_3(self, nums: List[int], k: int) -> int: 
+
+
+        heap  = [] 
+
+        freq = Counter(nums) #o(n)
+
+        #O(log(n))
+        for num, f in freq.items():
+            heapq.heappush(heap, (f, num))
+
+            if len(heap) > k: 
+                heapq.heappop()
+
+
+        return [num for _, num in heap] 
+    
+
+
+    
+
+
+
+
     
 
     
