@@ -138,7 +138,9 @@ class MedianStrem:
     def __init__(self): 
         self.small = [] # max
         self.large = [] # min
-    
+        # [1,2,3,4,5,6,7,8,9]
+        # small => [-5, -4,-3,- 2, -1]
+        # large => [6, 7, 8, 9, 10]
 
     def add(self, num: int): 
         heapq.heappush(self.small, -num)
@@ -151,6 +153,23 @@ class MedianStrem:
         if len(self.small) > len(self.large): 
             return -self.small[0]
         return (-self.small[0] + self.large[0]) / 2
+    
+    def add_num(self, num: int): 
+        heapq.heappush(self.small, -num)
+        heapq.heappush(self.large, - heapq.heappop(self.small))
+
+        if len(self.large) > len(self.small): 
+            heapq.heappush(self.small, - heapq.heappop(self.large))
+
+    
+
+    def median_cal(self): 
+        if len(self.small) > len(self.large):
+            return - self.small[0]
+
+
+        return (- self.small[0] + self.large[0]) / 2
+
 
 
 
