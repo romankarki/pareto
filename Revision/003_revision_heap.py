@@ -1,5 +1,6 @@
 from typing import List
 import heapq
+from collections import Counter
 
 class Revision: 
 
@@ -28,6 +29,39 @@ class Revision:
                 heapq.heappop()
 
         return heap[0]
+
+
+    def k_freq_element_pattern2_1(self, arr: List[int], k: int) -> int: 
+        '''
+            arr = [1,1,1,2,2,3]
+            k = 2 
+            output = [1,2]
+        '''
+        freq = Counter(arr)
+        heap = []
+
+        for num, f in freq.items():
+            heapq.heappush(heap, (f, num))
+            if len(heap) > k: 
+                heapq.heappop(heap)
+        return [num for _, num in heap]
+    
+
+    def k_freq_element_pattern2_2(self, arr: List[int], k: int) -> int:
+        # O(n) + O(log(n)) => O(n) 
+        heap = []
+
+        freq = Counter(arr)
+
+        for k, v in freq.items():
+
+            heapq.heappush(heap, (v, k))
+            if len(heap) > k: 
+                heap.pop()
+
+
+        return [num for _,num in heap ]
+
     
 
     
