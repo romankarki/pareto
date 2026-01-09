@@ -130,6 +130,38 @@ class Revision:
     
 
         return res
+    
+
+    def k_closest_distance_pattern4_1(self, points, k):
+        '''
+            points = [[1,3], [-2, 2]]
+            k = 1 
+            output = [[-2, 2]]
+        '''
+
+        heap = [] 
+
+        for x, y in points: 
+            dist = x*x + y*y
+
+            heapq.heappush(heap, (-dist, x,y))
+            if len(heap) > k: 
+                heapq.heappop(heap)
+        
+        return [[x,y] for _, x,y in heap]
+    
+    def k_closest_origin_pattern4_2(self, points: List[int, int], k: int) -> List[List[int,int]] :
+        heap = [] 
+
+        for x, y in points: 
+            dist = x**2 +y**2
+            heapq.heappush(heap, (-dist, x,y))
+            if len(heap) > k: 
+                heapq.heappop(heap)
+        
+        
+        return [[x,y] for _, x,y in heap]
+
 
 
 class MedianStrem:
