@@ -92,7 +92,25 @@ class Revision:
     
 
 
-    
+    def merge_k_sorted_pattern3_1(self, lists: List[List[int]]) -> List[int]: 
+        '''
+        lists = [[1,4,5], [1,3,4], [2,6]]
+        output = [1,1,3,3,4,4,5,6]
+        '''
+        #basically push and pop and at the same time 
+        heap = []
+        res = []
+
+        for i, lst in enumerate(lists): 
+            heapq.heappush(heap, (lst[0], i, 0))
+        
+
+        while heap:
+            val, i, j = heapq.heappop(heap)
+            res.append(val)
+            if j + 1 < len(lists[i]): 
+                heapq.heappush(heap, (list[i][j+1], i, j+1))
+        return res 
 
 
 
