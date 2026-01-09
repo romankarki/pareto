@@ -51,3 +51,27 @@ class Solution:
         
 
         return dfs(root)[1]
+
+
+
+    def subtree_smallest_deepest(self, root: TreeNode) -> TreeNode: 
+
+        def dfs(node: TreeNode) -> tuple[int, TreeNode]: 
+
+            if not node: 
+                return (0, None)
+            
+            left_depth, left_node = dfs(node.left)
+            right_depth, right_node = dfs(node.right)
+
+            if left_depth > right_depth: 
+                return (left_depth + 1, left_node)
+            
+            if right_depth > left_depth: 
+                return (right_depth +1, right_node)
+            
+
+            return (left_depth + 1, node)
+        
+
+        return dfs(root)[1]
