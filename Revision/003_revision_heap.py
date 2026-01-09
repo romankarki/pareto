@@ -62,6 +62,16 @@ class Revision:
 
         return [num for _,num in heap ]
 
+    def kth_largest_arr_pattern1_3(self, nums: List[int], k: int) -> int: 
+        heap = []
+
+
+        for each in nums: 
+            heapq.heappush(heap, each)
+            if len(heap) > k: 
+                heapq.heappop(heap)
+        return heap[0]
+
     
 
     
