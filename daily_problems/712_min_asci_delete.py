@@ -2,7 +2,9 @@ class Solution:
 
 
     def min_ascii_diff(self, s1: str, s2: str) -> int: 
-        
+        from functools import lru_cache
+
+        @lru_cache(None)
         def dfs(i: int, j: int) -> int: 
 
             if i == len(s1):
