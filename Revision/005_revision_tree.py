@@ -82,3 +82,32 @@ class Revision:
         )
     
     
+
+    def diameter_of_tree(self, root): 
+        self.ans = 0 
+
+        def dfs(node): 
+            if not node: 
+                return 0 
+            l = dfs(node.left)
+            r = dfs(node.right)
+            self.ans = max(self.ans, l+r)
+            return 1 + max(l, r)
+
+        dfs(root)
+        return self.ans
+
+
+    def diameter_of_tree_2(self, root) -> int: 
+
+
+        self.ans = 0 
+        def dfs(node): 
+            if not node: 
+                return 0
+            l = dfs(node.left)
+            r = dfs(node.right)
+            self.ans = max(l, r)
+            return 1 + max(l, r)
+        dfs(root)
+        return self.ans
