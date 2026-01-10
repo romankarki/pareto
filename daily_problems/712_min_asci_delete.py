@@ -14,7 +14,7 @@ class Solution:
                 return sum([ord(c) for c in s1[i:]])
 
             if s1[i]  == s2[j]: 
-                dfs(i+1, j+1)
+                return dfs(i+1, j+1)
 
 
             return min(
