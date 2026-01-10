@@ -161,6 +161,23 @@ class Revision:
         
         
         return [[x,y] for _, x,y in heap]
+    
+
+
+    def heap_greedy_scheduling(self, intervals: List[int, int]) -> int: 
+        """
+            intervals : [[0,30], [5,10], [15,20]]
+            output = 2
+        """
+        intervals.sort()
+
+        heap = []
+
+        for start, end in intervals:
+            if heap and heap[0] <= start: 
+                heapq.heappop(heap)
+            heapq.heappush(heap, end)
+        return len(heap)
 
 
 
