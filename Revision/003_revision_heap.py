@@ -178,6 +178,19 @@ class Revision:
                 heapq.heappop(heap)
             heapq.heappush(heap, end)
         return len(heap)
+    
+    def last_stone(self, stones): 
+        heap = [-x for x in stones]
+
+        heapq.heapify(heap)
+
+        while len(heap) > 1: 
+            a = -heapq.heappop(heap)
+            b = -heapq.heappop(heap)
+            if a != b: 
+                heapq.heappush(heap, -(a-b))
+
+        return -heap[0] if heap else 0 
 
 
 
