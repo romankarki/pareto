@@ -179,6 +179,8 @@ class Revision:
             heapq.heappush(heap, end)
         return len(heap)
     
+
+    
     def last_stone(self, stones): 
         heap = [-x for x in stones]
 
@@ -191,6 +193,27 @@ class Revision:
                 heapq.heappush(heap, -(a-b))
 
         return -heap[0] if heap else 0 
+    
+
+
+    def kth_smallest_insorted_matrix_pattern8_1(self, matrix, k):
+
+        n  = len(matrix)
+
+        heap = [(matrix[0][0], 0, 0)]
+
+        visited = {(0,0)}
+
+        while k: 
+            val, r, c = heapq.heappop(heap)
+            k -= 1
+            if k == 0:
+                return val
+            
+            for nr, nc in [(r+1,c), (r, c+1)]:
+                if nr < n and nc < n and (nr,nc) not in visited:
+                    heapq.heappush(heap, (matrix[nr][nc], nr, nc))
+                    visited.add((nr, nc))
 
 
 
