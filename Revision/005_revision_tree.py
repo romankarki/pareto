@@ -135,3 +135,23 @@ class Revision:
             or 
             self.path_sum_pattern(root.right, target - root.val)
         )
+
+
+    def path_sum_ii(self, root, target): 
+
+        self.ans = [] 
+        def dfs(node, remain, path):
+            if not node: 
+                return 
+            path.append(node.val)
+            if not node.left and node.right and remain == node.val:
+                self.ans(path.copy())
+            
+            else: 
+                dfs(node.left, remain - node.val, path)
+                dfs(node.right, remain - node.val, path)
+            path.pop()
+            
+
+        dfs(root, target, [])
+        return self.ans
