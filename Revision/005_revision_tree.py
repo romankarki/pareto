@@ -74,7 +74,7 @@ class Revision:
 
     def depth_of_tree(self, root): 
         if not root: 
-            return 
+            return 0
         
         return 1 + max(
             self.depth_of_tree(root.left), 
@@ -111,3 +111,27 @@ class Revision:
             return 1 + max(l, r)
         dfs(root)
         return self.ans
+    
+    def path_sum_pattern_1(self, root, target): 
+        if not root: 
+            return False
+        if not root.left and not root.right: 
+            return root.val == target
+        return (
+            self.path_sum_pattern_1(root.left, target - root.val) or 
+            self.path_sum_pattern_1(root.right, target - root.val)
+        )
+    
+
+    def path_sum_pattern(self, root, target): 
+
+        if not root: 
+            return False
+        if not root.left and not root.right: 
+            return root.val == target
+        
+        return (
+            self.path_sum_pattern(root.left, target - root.val )
+            or 
+            self.path_sum_pattern(root.right, target - root.val)
+        )
