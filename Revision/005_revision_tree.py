@@ -40,3 +40,33 @@ class Revision:
                     q.append(node.right)
             res.append(level)
         return res
+    
+
+    def pattern3_depth_1(self, root: Optional[TreeNode]) -> int: 
+        if not root: 
+            return 
+        return 1 + max(
+            self.pattern3_depth_1(root.left),
+            self.pattern3_depth_1(root.right)
+        )
+
+
+    def pattern2_leveltraverse_2(self, root): 
+
+        if not root: 
+            return 
+        res = [] 
+
+        q = deque([root])
+
+        while q: 
+            level = []
+            for _ in range(len(q)):
+                node = q.popleft()
+                level.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            q.append(level)
+        return res
