@@ -70,3 +70,15 @@ class Revision:
                     q.append(node.right)
             q.append(level)
         return res
+    
+
+    def depth_of_tree(self, root): 
+        if not root: 
+            return 
+        
+        return 1 + max(
+            self.depth_of_tree(root.left), 
+            self.depth_of_tree(root.right)
+        )
+    
+    
