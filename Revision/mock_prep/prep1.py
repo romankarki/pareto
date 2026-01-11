@@ -115,3 +115,29 @@ class Preparation_Week_1:
                     dfs(r,c)
                     count +=1
         return count 
+    
+
+    #Trees max_depth
+    def max_depth(self, root):
+        if not root:
+            return 0 
+        return 1 + max(self.max_depth(root.left), self.max_depth(root.right))
+    
+
+    def path_sum_ii(self, root, target):
+        res = []
+        def dfs(node, path, total):
+            if not node: 
+                return 
+            path.append(node.val)
+            total += node.val 
+
+            if not node.right and not node.left and total == target:
+                res.append(path[:])
+            dfs(node.left, path, total)
+            dfs(node.right, path, total)
+            path.pop()
+
+
+        dfs(root, [], 0)
+        return res
