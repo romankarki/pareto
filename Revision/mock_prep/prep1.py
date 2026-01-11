@@ -155,3 +155,18 @@ class Preparation_Week_1:
                 r = m -1 
 
         return -1
+    
+
+    def valid_paranthesis(self, s):
+
+        stack = []
+
+        mp = {')': '(', ']': '[', '}': '{'}
+
+        for c in s:
+            if c in mp:
+                if not stack or stack.pop() != mp[c]:
+                    return False
+                else: 
+                    stack.append(c)
+        return not stack 
