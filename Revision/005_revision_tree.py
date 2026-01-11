@@ -170,3 +170,7 @@ class Revision:
 
         dfs(root)
         return self.maxSum
+    
+
+    def validate_bst_pattern_01(self, root: Optional[TreeNode]) -> bool: 
+        return False
