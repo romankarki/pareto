@@ -77,15 +77,41 @@ class Preparation_Week_1:
 
 
 
-#Greedy best time to buy stocks
+    #Greedy best time to buy stocks
 
-def max_profil(self, prices: List[int]): 
-    min_price = float('inf')
+    def max_profil(self, prices: List[int]): 
+        min_price = float('inf')
 
-    profit = 0 
+        profit = 0 
 
-    for p in prices: 
-        min_price = min(min_price, p)
-        profit = max(profit, p - min_price)
+        for p in prices: 
+            min_price = min(min_price, p)
+            profit = max(profit, p - min_price)
 
-    return profit 
+        return profit 
+
+
+    #dfs-> num islands
+
+    def num_islands(self, grid: List[List[int]]) -> int: 
+
+        R, C  = len(grid), len(grid[0])
+
+
+        def dfs(r, c):
+            if r < 0 or c < 0 or r >= R or c >= C or grid[r][c] == "0":
+                return 
+            grid[r][c] = "0"
+            dfs(r+1, c)
+            dfs(r, c+1)
+            dfs(r-1, c)
+            dfs(r, c -1) 
+
+        count = 0 
+
+        for r in range(R):
+            for c in range(C):
+                if grid[r][c] =="1":
+                    dfs(r,c)
+                    count +=1
+        return count 
