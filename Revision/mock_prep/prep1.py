@@ -224,6 +224,21 @@ class Preparation_Week_1:
             res = max(res, r - l + 1)
         
         return res
+    
+    #two pointers
+
+    def two_sum(self, nums, target):
+        l, r = 0, len(nums) -1
+        while l < r:
+            total = nums[l] + nums[r]
+            if total == target:
+                return [l, r]
+            elif s < target:
+                l += 1
+            else: 
+                r -= 1
+        return [-1, -1]
+
 
 
 
