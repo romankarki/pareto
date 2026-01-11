@@ -47,3 +47,30 @@ class Preparation_Week_1:
             
 
         return res
+    
+
+
+    #Graphs
+
+    def bfs_grid(self, grid: List[List[int]]):
+
+        from collections import deque
+
+        rows, cols = len(grid), len(grid[0])
+
+        q = deque([(0,0,0)])
+        visited = {(0,0)}
+
+        while q:
+            r, c, d = q.popleft()
+
+            if r == rows -1 and c == cols - 1:
+                return d
+            
+            for dr, dc in [(1,0), (-1, 0), (0, 1), (0, -1)]:
+                nr, nc = r + dr, c + dc
+                if 0<=nr < rows and 0<= nc < cols and grid[nr][nc] == 0 and (nr, nc) not in visited:
+                    visited.add((nr, nc))
+                    q.append((nr, nc, d+1))
+
+        return -1
