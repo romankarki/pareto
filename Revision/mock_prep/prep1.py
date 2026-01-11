@@ -170,3 +170,50 @@ class Preparation_Week_1:
                 else: 
                     stack.append(c)
         return not stack 
+    
+
+    #linked List
+    def has_cycle(self, head):
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next 
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False 
+    
+
+    def reverse_llist(self, head):
+        prev = None 
+        curr = head 
+        while curr: 
+            nxt = curr.next
+            curr.next = prev 
+            prev = curr
+            curr = nxt
+        return prev 
+    
+    def remove_nth_node(self, head, n):
+
+        dummy = ListNode(0)
+        dummy.next = head 
+        slow = fast = dummy 
+        for _ in range(n+1):
+            fast = fast.next
+        
+        while fast:
+            slow = slow.next 
+            fast = fast.next
+        
+        slow.next = slow.next.next
+        return dummy.next
+
+
+
+
+
+
+class ListNode:
+    def __init__(self, val = 0, next = None):
+        self.val = val
+        self.next = next
