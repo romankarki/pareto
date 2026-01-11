@@ -74,3 +74,18 @@ class Preparation_Week_1:
                     q.append((nr, nc, d+1))
 
         return -1
+
+
+
+#Greedy best time to buy stocks
+
+def max_profil(self, prices: List[int]): 
+    min_price = float('inf')
+
+    profit = 0 
+
+    for p in prices: 
+        min_price = min(min_price, p)
+        profit = max(profit, p - min_price)
+
+    return profit 
