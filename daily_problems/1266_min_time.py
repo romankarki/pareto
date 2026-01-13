@@ -16,3 +16,10 @@ class Solution:
 
             total += max(dx, dy)
         return total
+
+
+
+
+s = Solution()
+
+print(s.min_time([[1,1],[1,2],[5,5],[-10,10]]))
