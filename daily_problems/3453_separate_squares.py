@@ -28,5 +28,41 @@ class Solution:
                 low = mid
         return high 
 
+    
+
+
+    def separate_squares_i(self, squares: List[List[int]]) -> float: 
+        total_area = sum(l*l for _, _, l in squares)
+
+        half = total_area / 2.0
+
+        low, high = min(y for _,y,_ in squares), max(y+l for _,y,l in squares)
+
+    
+
+
+        def area_below(h:int): 
+            area = 0 
+            for _, y, l in squares:
+                if h <= y:
+                    continue
+                elif h >= y + l:
+                    area += l * l
+                else:
+                    area += (h-y) * l 
+            return area 
+        
+        while (high - low) > 1e-6:
+            mid = (low + high) / 2
+            if area_below(mid) < half: 
+                low = mid
+            else:
+                high = mid
+        return low 
+
+    
+
+    
+
 
     
