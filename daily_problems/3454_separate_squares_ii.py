@@ -75,3 +75,5 @@ class Solution:
             else: 
                 high = mid
         return low 
+
+# too dificcult can be skipped
