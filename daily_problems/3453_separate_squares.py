@@ -38,9 +38,6 @@ class Solution:
 
         low, high = min(y for _,y,_ in squares), max(y+l for _,y,l in squares)
 
-    
-
-
         def area_below(h:int): 
             area = 0 
             for _, y, l in squares:
