@@ -15,10 +15,21 @@ class Solution:
         output = true
         exp: total sum is 42 of len >= 2 and is multiple of k = 6 
 
-        brute force will be o(n**2)
+        brute force will be o(n**2) & o(1)
+        optimal o(n) & o(n)
         '''
-        
-        pass
+        mp = {0: -1}
+        prefix = 0
+
+        for i, x in enumerate(nums): 
+            prefix = (prefix + x) % k
+            if prefix in mp: 
+                if i - mp[prefix] > 1: 
+                    return True 
+            else: 
+                mp[prefix] = i 
+
+        return False  
 
 
 
