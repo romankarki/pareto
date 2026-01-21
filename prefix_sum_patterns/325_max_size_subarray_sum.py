@@ -5,6 +5,15 @@ class Solution:
 
 
     def max_size(self, nums: List[int], k) -> int: 
+        '''
+        input = [2, 1, -1]
+        k = 2 
+        output = 3 
+
+        explanation: [2] is 2 of len 1 
+                     [2,1,-1] is 2 of len 3 (answer)
+        '''
+
 
         mp = {0: - 1}
 
