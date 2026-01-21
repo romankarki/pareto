@@ -18,7 +18,7 @@ class Solution:
         brute force will be o(n**2) & o(1)
         optimal o(n) & o(n)
         '''
-        mp = {0: -1}
+        mp = {0: -1} # remainder : index
         prefix = 0
 
         for i, x in enumerate(nums): 
@@ -30,6 +30,22 @@ class Solution:
                 mp[prefix] = i 
 
         return False  
+    
+
+    def check_subarray_intuitive(self, nums: List[int], k: int) -> bool: 
+
+        remain = {} # remainder: index
+        total = 0
+        prefix = 0 
+        for i,x in enumerate(nums): 
+            total += x
+            prefix = (total) % k
+            if prefix not in remain: 
+                remain[prefix] = i
+            elif (i - remain[prefix]) > 1:
+                return True  
+
+        return False 
 
 
 
