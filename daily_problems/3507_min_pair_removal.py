@@ -12,8 +12,6 @@ class Solution:
                     return False
             return True 
         
-
-
         arr = nums[:]
         ops = 0 
         while not is_sorted(arr):
