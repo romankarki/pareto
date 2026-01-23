@@ -141,14 +141,12 @@ class Solution:
         remain = {}
         total = prefix = 0 
 
-
-
         return False 
     
 
 
     def is_cont_subarray_sum_modulo(self, nums: List[int], k: int) -> bool:
-        remain = {}
+        remain = {0: -1} # remainder : index and 0 remainder for -1 not started 
 
         prefix = total = 0
 
