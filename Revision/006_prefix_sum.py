@@ -68,6 +68,98 @@ class Solution:
 
             prefix[curr_sum] = 1 + prefix.get(curr_sum, 0)
         return res 
+    
+
+    def cont_subarray_sum_523(self, nums: List[int], k: int) -> bool: 
+        """
+        Problem Statement: 
+        input = [23, 2, 4, 6, 7] for k = 6
+        output = True 
+        2+4 = 6 (contiguous)
+
+        sum(input) = 42 % 6 == 0 
+
+
+        Answer: Optimal 
+        k = 6
+        remain = {
+            5: 0, 
+            1: 1, 
+            5: 2
+
+        }
+
+        k = 13 
+        [23, 2, 4, 6, 7] 
+        remain = {
+            10: 0, 
+            12: 1, 
+            3 : 2, 
+            9 : 3,
+            3 : 4
+        }
+
+        k = 13
+        [23, 2, 6, 4, 7]
+         23 25 31 35  42
+         10 12 2  6   3
+         0   1 2  3   4
+
+
+         [23,  2,  4,  6,  7]
+          23  25   29  35  42
+          10  12   3   9    3
+
+
+        """
+
+        remain = {0: -1} # remainder : index
+
+        total = prefix = 0 
+        
+        for i, x in enumerate(nums):
+            total += x
+            prefix = total % k 
+            if prefix not in remain:
+                remain[prefix] = i
+            elif (i - remain[prefix] > 1): 
+                return True 
+        
+        return False 
+
+
+
+        #brute force  
+        for i in range(0, len(nums) - 1):
+            total = nums[i] # I'm skipping for len == 1
+            for j in range(i+1, len(nums)):
+                total += nums[j]
+                if total % k == 0:
+                    return True 
+        
+
+        remain = {}
+        total = prefix = 0 
+
+
+
+        return False 
+    
+
+
+    def is_cont_subarray_sum_modulo(self, nums: List[int], k: int) -> bool:
+        remain = {}
+
+        prefix = total = 0
+
+        for i, num in enumerate(nums): 
+            total += num 
+            prefix = total % k
+            if prefix not in remain: 
+                remain[prefix] = i
+            elif (i - remain[prefix]) >= 2:
+                return True 
+        return False 
 
 
 
