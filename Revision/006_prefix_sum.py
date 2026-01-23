@@ -161,9 +161,5 @@ class Solution:
 
 
 
-
-
-
-
 s = Solution()
 print(s.prefix_sum_pattern_560_subarray_equals_k([1,2,3], 3))
