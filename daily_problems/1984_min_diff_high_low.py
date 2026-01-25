@@ -1,16 +1,12 @@
 from typing import List
 
-
 class Solution:
 
 
     def mindiff(self, nums: List[int], k: int) -> int: 
-
-
         if len(nums) < k :
             return 0 
         
-
         nums.sort()
 
         l, r = 0, k-1
