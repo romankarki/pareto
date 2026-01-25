@@ -1,5 +1,5 @@
 from typing import List 
-
+import heapq
 
 
 class Solution: 
@@ -38,3 +38,26 @@ class Solution:
             nums[idx] = min_pair
             nums.pop(idx+1)
         return ops 
+
+
+    def greedy(self, nums: List[int]) -> int: 
+        
+        n = len(nums)
+        if n <= 1: 
+            return  0 
+        
+        next_arr = list(range(1, n+1))
+        next_arr[-1] = -1 
+        prev_arr = list(range(-1, n-1))
+
+        removed = [False] * n 
+        vals = list(nums)
+
+        inversions = 0 
+        for i in range(n-1):
+            if vals[i] > vals[i+1]:
+                inversions += 1
+        if inversions == 0 :
+            return 0 
+        
+        pass
