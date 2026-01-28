@@ -53,6 +53,34 @@ class Solution:
             prefix_count[odd_sum] += 1
 
         return result 
+    
+
+
+    def nice_numbers_subs(self, nums: List[int], k: int) -> int: 
+        '''
+        [1, 1, 2, 1, 1] and k = 3 
+
+        prefix = {
+           0: 1, 
+           1: 1,
+           -2: 0,  
+           2: 2,
+           -1: 0,
+           3: 1 
+        }
+        
+        '''
+        result = 0 
+        prefix = Counter({})
+        odd_sum = 0 
+        for num in nums: 
+            odd_sum += num % 2
+            if (odd_sum -k) == 0:
+                result += 1
+            if (odd_sum -k) in prefix: #case of leading no odd numbers like [2,2,2,1,2,2,1,2,1,2,2]
+                result += prefix[odd_sum - k]
+            prefix[odd_sum] += 1
+        return result 
 
 
     def space_optimized(self, nums, k):
@@ -69,7 +97,6 @@ class Solution:
         return atmost(k) - atmost(k-1)
 
     
-
 s = Solution()
 
 print(s.nice_numbers([1,1,2,1,1], 3))
