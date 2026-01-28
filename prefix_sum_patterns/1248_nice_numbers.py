@@ -73,3 +73,4 @@ class Solution:
 s = Solution()
 
 print(s.nice_numbers([1,1,2,1,1], 3))
+print(s.space_optimized([1,1,2,1,1], 3))
