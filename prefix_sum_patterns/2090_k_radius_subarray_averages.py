@@ -27,6 +27,8 @@ class Solution:
         for num in nums: 
             total += num 
             prefix_sum.append(total)
+
+        #here instead of precomputed prefixes I can use running sum as well
         
         
         while r < len(nums): 
