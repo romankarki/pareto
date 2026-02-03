@@ -8,6 +8,17 @@ class Solution:
     def min_cost(self, nums: List[int], k: int, dist: int) -> int: 
         '''
          nums = [1,3,2,6,4,2] and k = 3 
+
+
+         here I have to select nums[0] = 1 for cost calc
+
+         so there is case like 
+
+         [1] [3,2,6,4,2] -> select 2 break points from 
+         [1] [3,2,6,4] -> select k break points
+         [1] [2,6,4,2] -> select k break points
+         [1] [6,4,2] -> select k break points
+         [1] [4,2] -> select k break points 
         '''
         # brute force - O(n**2 log(n))
 
