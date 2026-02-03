@@ -13,13 +13,28 @@ class Solution:
 
         k -= 1
         result = float('inf')
+        print('input = ', nums)
+        print("k = k - 1 =", k)
 
         for start in range(1, len(nums) - k + 1):
+            print("------------------------------")
             end = min(start + dist, len(nums) - 1)
             if end - start + 1 < k : 
                 break 
 
+            print("start =", start,"and end =", end)
+
             window = sorted(nums[start: end + 1])
+            print("window=",window)
             cost = nums[0] + sum(window[:k])
+            print("cost = ", nums[0] ,"+ sum of", window[:k] )
+            print("result = min of", result,"and", cost )
             result = min(result, cost)
+            print("cost =", cost,"and result=", result)
         return result 
+    
+
+
+s = Solution()
+
+s.min_cost([1,3,2,6,4,2], 3, 3)
