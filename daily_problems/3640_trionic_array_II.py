@@ -8,6 +8,7 @@ class Solution:
         n = len(nums)
         ans = float("-inf")
         i = 0
+        print("Input =", nums)
 
         while i < n:
             j = i + 1
