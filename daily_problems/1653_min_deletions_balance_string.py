@@ -1,6 +1,3 @@
-from typing import List 
-
-
 class Solution:
 
     def min_deleteion(self, s: str) -> int: 
