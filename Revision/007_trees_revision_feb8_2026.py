@@ -51,6 +51,7 @@ def level_order(root: Optional[TreeNode]) -> List[List[int]]:
 
     return result
 
+
 def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
     if not root:
         return []
@@ -72,10 +73,40 @@ def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
     return result 
 
 
+
 def max_depth(root: Optional[TreeNode]) -> int: 
+    '''
+    o(n) time 
+    o(h) space
+    '''
     if not root: 
         return 0 
     left_depth = max_depth(root.left)
     right_depth = max_depth(root.right)
 
     return 1 + max(left_depth, right_depth) 
+
+
+def max_depth_bfs_optimal(root) -> int: 
+    '''
+    o(n) time 
+    o(w) space
+    '''
+
+    if not root:
+        return 0 
+    
+    q = deque([root])
+    max_depth = 0 
+
+    while q:
+        node, depth = q.popleft()
+
+        max_depth = max(max_depth, depth)
+
+        if node.left:
+            q.append((node.left, depth + 1))
+        if node.right:
+            q.append((node.right, depth + 1))
+    
+    return max_depth
