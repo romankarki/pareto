@@ -70,3 +70,12 @@ def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         last_item = current_level[-1]
         result.append(last_item)
     return result 
+
+
+def max_depth(self, root: Optional[TreeNode]) -> int: 
+    if not root: 
+        return 0 
+    left_depth = max_depth(root.left)
+    right_depth = max_depth(root.right)
+
+    return 1 + max(left_depth, right_depth) 
