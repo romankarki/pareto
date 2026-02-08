@@ -72,7 +72,7 @@ def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
     return result 
 
 
-def max_depth(self, root: Optional[TreeNode]) -> int: 
+def max_depth(root: Optional[TreeNode]) -> int: 
     if not root: 
         return 0 
     left_depth = max_depth(root.left)
