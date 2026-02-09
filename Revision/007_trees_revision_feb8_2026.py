@@ -209,4 +209,35 @@ class PathSum:
 
 
 
+    def max_path_sum(self, root):
+        self.max_sum = float('-inf')
+
+        def dfs(node):
+            if not node:
+                return 0
+            l = max(0, dfs(node.left))
+            r = max(0, dfs(node.right))
+
+            self.max_sum = max(self.max_sum, node.val + l + r)
+            return node.val + max(l, r)
+
+
+        dfs(root)
+        return self.max_sum
+    
+
+    def lca_tree(self, root, p, q):
+        if not root or root == p or root == q:
+            return root 
+        
+        l = self.lca_tree(root.left, p, q)
+        r = self.lca_tree(root.right, p, q)
+
+        if l and r:
+            return root 
+        return l if l else r
+    
+
+
+
 
