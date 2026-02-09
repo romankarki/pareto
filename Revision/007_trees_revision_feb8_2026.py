@@ -7,7 +7,6 @@ class TreeNode:
         self.val = val 
         self.left = left 
         self.right = right 
-    
 
 
 def traversal(root: Optional[TreeNode]) -> List[int]:
@@ -71,7 +70,6 @@ def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         last_item = current_level[-1]
         result.append(last_item)
     return result 
-
 
 
 def max_depth(root: Optional[TreeNode]) -> int: 
@@ -146,3 +144,23 @@ class Sol:
             return 1 + max(l, r)
 
         return self.ans 
+    
+##pathsum patterns
+
+def hasPathSum(root, target_sum):
+    ''' O(n) -> time & O(h) -> space'''
+
+    if not root:
+        return False 
+    
+    if not root.left and not root.right:
+        return root.val == target_sum
+    
+    remaining = target_sum - root.val
+    return hasPathSum(root.left, remaining) or hasPathSum(root.right, remaining)
+
+
+
+
+
+
