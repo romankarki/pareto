@@ -185,7 +185,28 @@ class PathSum:
         self.dfs(root.right, target - root.val, path)
 
         path.pop()
-        
+
+
+    def path_sum_iii(self, root, target):
+        def dfs_pre(node, current_sum):
+            if not node:
+                return 0
+            
+            current_sum += node.val 
+
+            count = prefix_sums.get(current_sum - target, 0)
+
+            prefix_sums[current_sum] = prefix_sums.get(current_sum, 0) + 1
+
+            count += dfs_pre(node.left, current_sum)
+            count += dfs_pre(node.right, current_sum)
+
+            prefix_sums[current_sum] -= 1
+            return count
+
+        prefix_sums = {0: 1}
+        return dfs_pre(root, 0)
+
 
 
 
