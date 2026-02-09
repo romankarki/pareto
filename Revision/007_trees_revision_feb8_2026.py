@@ -110,3 +110,17 @@ def max_depth_bfs_optimal(root) -> int:
             q.append((node.right, depth + 1))
     
     return max_depth
+
+class Sol: 
+
+    def diameter_tree(self, root) -> int: 
+        self.ans = 0 
+        def dfs(node):
+            if not node:
+                return 0 
+            l = dfs(node.left)
+            r = dfs(node.right)
+            self.ans = max(self.ans, l+r)
+            return 1 + max(l, r)
+
+        return self.ans 
