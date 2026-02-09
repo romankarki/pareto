@@ -111,6 +111,28 @@ def max_depth_bfs_optimal(root) -> int:
     
     return max_depth
 
+
+def is_balanced(root): 
+
+    def check_height(node):
+        if not node:
+            return 0 
+        
+        left = check_height(node.left)
+        if left == -1:
+            return -1 
+        
+        right = check_height(node.right)
+        if right == -1:
+            return -1 
+        
+        if abs(left -right) > 1: 
+            return -1
+        
+        return max(left, right) + 1
+
+    return check_height(root) != -1
+
 class Sol: 
 
     def diameter_tree(self, root) -> int: 
