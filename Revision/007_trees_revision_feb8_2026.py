@@ -162,5 +162,30 @@ def hasPathSum(root, target_sum):
 
 
 
+class PathSum:
+
+
+    def sum_ii(self, root, target):
+
+        self.ans = []
+        self.dfs(root, target, [])
+        return self.ans 
+    
+
+    def dfs(self, root, target, path):
+        if not root:
+            return
+        
+        path.append(root.val)
+        if not root.left and not root.right: 
+            if root.val == target:
+                self.ans.append(path.copy())
+        
+        self.dfs(root.left, target - root.val, path)
+        self.dfs(root.right, target - root.val, path)
+
+        path.pop()
+        
+
 
 
