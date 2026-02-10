@@ -238,6 +238,34 @@ class PathSum:
         return l if l else r
     
 
+    def buildtree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        '''
+        preorder = [3, 9, 20, 15, 7]
+        inorder = [9, 3, 15, 20, 7]
+
+                3
+              /    \
+             9     20
+                  /   \
+                 15    7
+        '''
+        if not preorder or not inorder:
+            return None 
+        
+        root_val = preorder[0] #root 
+        root = TreeNode(root_val)
+
+        mid = inorder.index(root_val) # this is o(n) operation can be reduced by hashmap 
+
+        root.left = self.buildtree(preorder[1: mid+1], inorder[:mid])
+        root.right = self.buildtree(preorder[mid+1], inorder[mid+1:])
+
+        return root
+    
+
+    def buildtree_post_in(self, postorder, inorder)
+    
+
 
 
 
