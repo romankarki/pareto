@@ -276,6 +276,26 @@ class PathSum:
         root.right = self.buildtree_post_in(inorder[mid+1:], postorder[mid: len(postorder) -1])
 
         return root 
+    
+
+    def buildtree_pre_post(self, preorder, postorder): 
+
+        if not preorder:
+            return None
+        
+        root = TreeNode(preorder[0])
+
+        if len(preorder) == 1:
+            return root 
+
+        left_root = preorder[1]
+        idx = postorder.index(left_root)
+        left_size = idx + 1
+
+        root.left = self.buildtree_pre_post(preorder[1: left_size + 1], postorder[:left_size])
+        root.right = self.buildtree_pre_post(preorder[left_size+1:], postorder[left_size: -1])
+
+        return root 
 
     
 
