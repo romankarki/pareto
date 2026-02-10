@@ -263,7 +263,20 @@ class PathSum:
         return root
     
 
-    def buildtree_post_in(self, postorder, inorder)
+    def buildtree_post_in(self, inorder, postorder) -> Optional[TreeNode]:
+
+        if not postorder or not inorder:
+            return None 
+        
+        root = TreeNode(postorder[-1])
+
+        mid = inorder.index(root.val)
+
+        root.left = self.buildtree_post_in(inorder[:mid], postorder[:mid])
+        root.right = self.buildtree_post_in(inorder[mid+1:], postorder[mid: len(postorder) -1])
+
+        return root 
+
     
 
 
