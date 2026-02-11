@@ -399,6 +399,26 @@ class KSmallest_Tree:
 
         inorder(root)
         return self.ans 
+    
+    def kth_smallest_iterative(self, root, k):
+
+        stack = [] 
+        current = root 
+        count = 0 
+
+        while current or stack:
+            while current:
+                stack.append(current)
+                current = current.left
+            
+            current = stack.pop()
+            count += 1
+
+            if count == k:
+                return current.val 
+            
+            current = current.right
+        return -1 
 
     
 
