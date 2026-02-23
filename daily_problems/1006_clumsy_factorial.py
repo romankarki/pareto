@@ -1,6 +1,5 @@
 class Solution:
     def clumsy(self, n: int) -> int:
-        ops = []
         l = 0 
         ans = n
         result = 0
