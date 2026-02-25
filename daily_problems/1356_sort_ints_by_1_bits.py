@@ -23,5 +23,10 @@ class Solution:
             dd = count[each].copy()
             dd.sort()
             result += dd 
-            
+
         return result
+    
+
+    def pythonic_way(self, arr: List[int]) -> List[int]:
+
+        return sorted(arr, key = lambda x: (x.bit_count(), x))
