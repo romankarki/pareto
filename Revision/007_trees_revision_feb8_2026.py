@@ -422,7 +422,7 @@ class KSmallest_Tree:
 
 
 #flip equivalency included in another file 
-
+#sum from root to leaf as binary also in another file, part of revision
     
 
 
