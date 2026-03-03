@@ -2,6 +2,12 @@ class Solution:
 
 
     def find_kth_bit(self, n: int, k: int):
+        '''
+        Problem statement Formula:
+        S1 = "0"
+        Si = Si - 1 + "1" + reverse(invert(Si - 1)) for i > 1
+        
+        '''
         s = "0"
         for i in range(1,n):
             new_s = self.invert_reverse(s)
