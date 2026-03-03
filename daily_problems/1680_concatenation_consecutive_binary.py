@@ -10,7 +10,8 @@ class Solution:
             b = str(bin(i))
             s += b[2:]
         
-        if s == "": return 0
+        if s == "": 
+            return 0
 
         modulo = 10**9 + 7
         return int(s, 2) % modulo
