@@ -223,3 +223,28 @@ class Revision:
             return False 
         
         return self.dfs_ll(head.next, node.left) or self.dfs_ll(head.next, node.right)
+
+
+    def vertical_order_traversal(self, root):
+
+        from collections import defaultdict
+
+        column_table = defaultdict(list)
+        queue = deque([(root, 0, 0)])
+
+        while queue:
+
+            node, row, col = queue.popleft()
+
+            column_table[col].append((node.left, row + 1, col -1))
+            
+            if node.left:
+                queue.append((node.left, row + 1, col -1))
+            if node.right:
+                queue.append((node.right, row + 1, col + 1))
+        result = []
+
+        for col in sorted(column_table.keys()):
+            column_table[col].sort()
+            result.append([val for _, val in column_table[col]])
+        return result
