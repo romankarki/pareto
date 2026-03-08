@@ -193,4 +193,15 @@ class Revision:
             return True 
         
         return self.is_subtree(root.left, subRoot) or self.is_subtree(root.right, subRoot)
+
+
+    def is_sameTree(self, p, q):
+        if not p and not q:
+            return True 
+        if not p or not q:
+            return False 
+        
+        if p.val == q.val:
+            return self.is_sameTree(p.left, q.left) and self.is_sameTree(p.right, q.right)
+        return False 
         
