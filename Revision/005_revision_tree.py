@@ -174,3 +174,23 @@ class Revision:
 
     def validate_bst_pattern_01(self, root: Optional[TreeNode]) -> bool: 
         return False
+    
+
+
+    def is_subtree(self, root, subRoot) -> bool:
+        def isSameTree(p,   q):
+            if not p and not q:
+                return True 
+            if not p or not q:
+                return False 
+            
+            return p.val == q.val and isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
+        
+        if not root:
+            return False 
+        
+        if isSameTree(root, subRoot):
+            return True 
+        
+        return self.is_subtree(root.left, subRoot) or self.is_subtree(root.right, subRoot)
+        
