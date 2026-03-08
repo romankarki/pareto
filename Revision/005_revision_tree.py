@@ -204,4 +204,22 @@ class Revision:
         if p.val == q.val:
             return self.is_sameTree(p.left, q.left) and self.is_sameTree(p.right, q.right)
         return False 
+    
+
+
+    def is_sub_path(self, head, root) -> bool:
+        if not root:
+            return False 
         
+        return self.dfs_ll(head, root) or self.is_sub_path(head, root.left)  or self.is_sub_path(head, root.right)
+    
+    def dfs_ll(self, head, node):
+        if not head:
+            return True 
+        
+        if not node:
+            return False 
+        if head.val != node.val:
+            return False 
+        
+        return self.dfs_ll(head.next, node.left) or self.dfs_ll(head.next, node.right)
