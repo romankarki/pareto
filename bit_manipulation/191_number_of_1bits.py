@@ -12,8 +12,12 @@ class Solution:
         return count 
     
     def hamming_shift(self, n):
+        '''looks at zero as well wasting time though it's o(1)'''
         res = 0 
         while n > 0:
             res += n % 2
             n = n >> 1
         return res
+
+
+    
