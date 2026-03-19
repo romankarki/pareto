@@ -12,5 +12,6 @@ class Solution:
 
         result = 0 
         for each in subarrays:
-            result += sum(subarrays)
+            result += sum(each)
         return result 
+    
