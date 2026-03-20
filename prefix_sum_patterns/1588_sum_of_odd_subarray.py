@@ -15,3 +15,6 @@ class Solution:
             result += sum(each)
         return result 
     
+
+    def sum_odd_len_optimized(self, arr):
+        pass
