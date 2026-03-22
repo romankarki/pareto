@@ -21,6 +21,23 @@ class Solution:
         return res 
     
 
+    def subarray_sum_revision(self, nums: List[int], k: int) -> int:
+        res = running_sum = 0 
+        seen = {0: 1}
+        '''
+        [1, 2, 3], 3
+        0 -> 1 
+        '''
+
+        for num in nums:
+            running_sum += num 
+            diff = running_sum - k 
+            res += seen.get(diff, 0) 
+            seen[running_sum] = 1 + seen.get(running_sum, 0)
+        
+        return res  
+    
+
 
 
 s = Solution()

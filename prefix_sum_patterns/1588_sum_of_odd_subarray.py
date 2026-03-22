@@ -17,4 +17,5 @@ class Solution:
     
 
     def sum_odd_len_optimized(self, arr):
-        pass
+
+        return None  
