@@ -59,6 +59,23 @@ class Solution:
                     return True 
         
         return False 
+    
+
+    def continous_subarray_sum_revision(self, nums: List[int], k: int) -> bool:
+        remain = {0: -1}
+
+        mod = total = 0 
+
+        for i, num in enumerate(nums):
+            total += num 
+            mod = total % k
+
+            if mod not in remain:
+                remain[mod] = i
+            elif (i - remain[mod] >= 2):
+                return True 
+        return False 
+
 
 
 
