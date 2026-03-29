@@ -1,6 +1,6 @@
 from typing import List 
 from collections import deque
-class Revision:
+class BFS_PATTERNS:
 
 
     
@@ -36,3 +36,9 @@ class Revision:
                         grid[nr][nc] = 2 
             time += 1
         return time if fresh == 0 else -1  
+
+
+class DFS_PATTERNS:
+    
+    def num_of_islands(self, grid):
+        pass
