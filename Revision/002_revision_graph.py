@@ -2,8 +2,6 @@ from typing import List
 from collections import deque
 class BFS_PATTERNS:
 
-
-    
     def rotten_oranges(self, grid: List[List[int]]) -> int: 
 
         time = 0 
@@ -40,5 +38,25 @@ class BFS_PATTERNS:
 
 class DFS_PATTERNS:
     
-    def num_of_islands(self, grid):
-        pass
+    def num_of_islands(self, grid) -> int:
+        directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+
+        R, C = len(grid), len(grid[0])
+        islands = 0 
+
+        def traverse(r, c):
+            if not(0 <= r < R) or not(0 <= c < C) or grid[r][c] == "0":
+                return 
+            
+            grid[r][c] = "0"
+            
+            for dr, dc in directions:
+                nr, nc = r + dr, c + dc
+                traverse(nr, nc)
+
+        for r in range(R):
+            for c in range(C):
+                if grid[r][c] == 1:
+                    traverse(r, c)
+                    islands += 1
+        return islands
