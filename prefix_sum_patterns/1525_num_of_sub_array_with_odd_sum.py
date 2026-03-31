@@ -29,3 +29,21 @@ class Solution:
 
         result %= MOD 
         return result 
+
+    def num_subarray(self, arr):
+        MOD = 10**9 + 7
+        running_sum = 0 
+        odd_count = 0 
+        even_count = 1
+        result = 0 
+        for each in arr:
+            running_sum += each 
+            if running_sum % 2 == 0:
+                result += odd_count
+                even_count += 1
+            else:
+                result += even_count
+                odd_count += 1
+
+        result %= MOD
+        return result 
