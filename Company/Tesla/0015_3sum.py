@@ -71,7 +71,7 @@ class Solution:
                 break 
 
             l, r = i+1, len(nums) - 1
-            if nums[l] == nums[l-1]:
+            if nums[i] == nums[i-1]:
                 continue
 
             req = 0 - a
