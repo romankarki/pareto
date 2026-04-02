@@ -71,4 +71,27 @@ class Solution:
                 last_op = ch 
                 num = 0
         return sum(stack)
+    
+
+    def basic_calculator_revision4(self, s: str) -> int: 
+        stack = [] 
+        num = 0 
+        last_operator = "+"
+
+        for i,ch in s:
+            if ch.isdigit():
+                num = num * 10 + int(ch)
+            
+            if ch in "+-*/" :
+                if last_operator == "+":
+                    stack.append(num)
+                elif last_operator == "-":
+                    stack.append(-num)
+                elif last_operator == "*":
+                    stack.append(stack.pop() * num )
+                elif last_operator == "/":
+                    stack.append(stack.pop()/ num )
+                last_operator = ch 
+                num = 0 
+        return sum(stack)
         
