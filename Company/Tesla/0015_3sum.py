@@ -61,3 +61,35 @@ class Solution:
                     l += 1
 
         return ans
+    
+    def three_num_sum_revision2(self, nums: List[int]) -> int: 
+
+        nums.sort()
+        result = [] 
+        for i, a in nums:
+            if a > 0:
+                break 
+
+            l, r = i+1, len(nums) - 1
+            if nums[l] == nums[l-1]:
+                continue
+
+            req = 0 - a
+
+
+            while l < r: 
+                total = nums[l] + nums[r]
+                if total == req:
+                    result.append([a, nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+
+                    while nums[l] == nums[l-1]:
+                        l += 1
+                    continue
+                
+                if total > req:
+                    r -= 1
+                else:
+                    l += 1
+            return result 
