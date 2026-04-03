@@ -64,7 +64,7 @@ class Solution:
         
 
         def dfs(r, c):
-            if grid[r][c] == "0" or not (0 <= r < R) or not (0 <= c < C):
+            if not (0 <= r < R) or not (0 <= c < C) or grid[r][c] == "0":
                 return 
             grid[r][c] = "0"
             for dr, dc in dirs:
