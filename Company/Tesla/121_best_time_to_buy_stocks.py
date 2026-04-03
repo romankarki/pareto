@@ -54,4 +54,21 @@ class Solution:
             res = max(res, profit)
             r += 1
 
+        return res
+
+    def max_profit_revision_3(self, prices: List[int]) -> int: 
+        res = 0 
+        l, r = 0, 1 
+        
+
+        while l < r and r < len(prices):
+            profit = prices[r] - prices[l]
+            if profit < 0:
+                l = r 
+                r += 1 
+                continue
+            r += 1
+            res = max(res, profit)
+
+
         return res 
