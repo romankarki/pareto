@@ -14,6 +14,8 @@ class Solution:
             if each in opening:
                 stack.append(each)
                 continue
+            if len(stack) == 0:
+                return False 
             popped = stack.pop()
             if brac_dict[each] == popped:
                 continue 
