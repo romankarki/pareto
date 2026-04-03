@@ -25,6 +25,14 @@ class Solution:
                         continue 
                     q.append((nr, nc))
                     grid[nr][nc] = "0"
+        
+        def traversal_dfs(r, c):
+            if not (0 <= r < R) or not(0 <= c < C) or grid[r][c] == "0":
+                return 
+            grid[r][c] = "0"
+            for dr, dc in dirs:
+                nr, nc = r + dr, c + dc 
+                traversal_dfs(nr, nc)
 
 
         for r in range(R):
