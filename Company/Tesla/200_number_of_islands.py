@@ -41,3 +41,34 @@ class Solution:
                     traversal(r, c)
                     islands += 1
         return islands
+    
+
+    def num_of_islands_revision(self, grid: List[List[str]]) -> int:
+        islands = 0 
+        dirs = [
+            [-1, 0], [1, 0], [0, -1], [0, 1]
+        ]
+        R, C = len(grid), len(grid[0])
+
+        def bfs(r, c):
+            q = deque((r,c))
+            grid[r][c] = "0"
+            while q:
+                row, col = q.popleft()
+                for dr, dc in dirs:
+                    nr, nc = row + dr, col + dc 
+                    if grid[nr][nc] == "0" or not (0 <= nr < R) or not(0 <= nc < C) : 
+                        continue
+                    grid[nr][nc] = "0"
+                    q.append((nr, nc))
+
+
+
+        for r in range(R):
+            for c in range(C):
+                if grid[r][c] == "1":
+                    bfs(r, c)
+                    islands += 1
+
+
+        return islands
