@@ -61,6 +61,15 @@ class Solution:
                         continue
                     grid[nr][nc] = "0"
                     q.append((nr, nc))
+        
+
+        def dfs(r, c):
+            if grid[r][c] == "0" or not (0 <= r < R) or not (0 <= c < C):
+                return 
+            grid[r][c] = "0"
+            for dr, dc in dirs:
+                nr, nc = r + dr, c + dc
+                dfs(nr, nc)
 
 
 
