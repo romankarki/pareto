@@ -15,7 +15,8 @@ class LRUCache:
         pass
 
     def insert(self, node):
-        pass
+        prev, nxt = node.prev, node.next
+        prev.next, nxt.prev = nxt, prev 
 
     def get(self, key: int):
         pass
