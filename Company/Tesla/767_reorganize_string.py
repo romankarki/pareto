@@ -69,3 +69,36 @@ class Solution:
 
 
         return "".join(result)
+    
+
+
+    def reorganize_string_revision2(self, s: str) -> str: 
+
+        result = []
+        c = Counter(s)
+        heap = [(-cnt, ch) for ch, cnt in c.items()]
+        heapq.heapify(heap)
+
+        while len(heap) >= 2:
+            cnt1, ch1 = heapq.heappop(heap)
+            cnt2, ch2 = heapq.heappop(heap)
+
+            result.append(ch1)
+            result.append(ch2)
+
+            cnt1 += 1
+            cnt2 += 1
+
+            if cnt1 < 0 :
+                heapq.heappush(heap, (cnt1, ch1))
+            if cnt2 < 0:
+                heapq.heappush(heap, (cnt2, ch2))
+
+        if heap:
+            cnt, ch = heapq.heappop(heap)
+            if -cnt > 1:
+                return ""
+
+            result.append(ch)
+        
+        return "".joing(result)
