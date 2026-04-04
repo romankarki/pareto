@@ -127,10 +127,10 @@ class Solution:
         res = []
         nums.sort()
 
-        for i, a in nums:
+        for i, a in enumerate(nums):
             if a > 0:
                 break 
-            if nums[i-1] == nums[i]:
+            if i > 0 and  nums[i-1] == nums[i]:
                 continue
 
             req = 0 - a 
@@ -143,7 +143,7 @@ class Solution:
                     res.append([a, nums[l], nums[r]])
                     l += 1
                     r -= 1
-                    while nums[l-1] == nums[l]:
+                    while nums[l-1] == nums[l] and l < r:
                         l += 1
                 
                     continue
