@@ -121,6 +121,36 @@ class Solution:
                 else: 
                     l += 1
                 
+        return res
 
+    def three_num_sum_revision_4(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
 
-        return res 
+        for i, a in nums:
+            if a > 0:
+                break 
+            if nums[i-1] == nums[i]:
+                continue
+
+            req = 0 - a 
+
+            l, r = i +1, len(nums) - 1
+            while l < r:
+                total = nums[l] + nums[r]
+
+                if total == req:
+                    res.append([a, nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+                    while nums[l-1] == nums[l]:
+                        l += 1
+                
+                    continue
+                
+                if total > req:
+                    r -= 1
+                else:
+                    l += 1
+            
+        return res
