@@ -9,4 +9,7 @@ class Solution:
                 digit = n % 10 
                 sum_of_squares += digit ** 2
                 n =  n // 10
+            if sum_of_squares == 1:
+                return True 
+            n = sum_of_squares
         return False 
